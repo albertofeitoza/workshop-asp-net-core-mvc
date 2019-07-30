@@ -54,7 +54,7 @@ namespace SalesWebMvc.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("id,Nome")] Departament departament)
+        public async Task<IActionResult> Create([Bind("id,Nome,Telefone,Endereco,Cnpj,nscricaoEstadual,Responsavel")] Departament departament)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace SalesWebMvc.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("id,Nome")] Departament departament)
+        public async Task<IActionResult> Edit(int id, [Bind("id,Nome,Telefone,Endereco,Cnpj,nscricaoEstadual,Responsavel")] Departament departament)
         {
             if (id != departament.id)
             {
