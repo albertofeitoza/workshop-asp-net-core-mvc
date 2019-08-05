@@ -1,4 +1,6 @@
-﻿namespace SalesWebMvc.Models.ViewModels
+﻿using System.Collections.Generic;
+
+namespace SalesWebMvc.Models.ViewModels
 {
     public class Departament
     {
@@ -10,6 +12,20 @@
         public string nscricaoEstadual { get; set; }
         public string Responsavel { get; set; }
 
+        public ICollection<Seller> Sellers { get; set; } = new List<Seller>();
 
+        public Departament() {
+        }
+
+        public Departament(int id, string nome, string telefone, string endereco, string cnpj, string nscricaoEstadual, string responsavel)
+        {
+            this.id = id;
+            Nome = nome;
+            Telefone = telefone;
+            Endereco = endereco;
+            Cnpj = cnpj;
+            this.nscricaoEstadual = nscricaoEstadual;
+            Responsavel = responsavel;
+        }
     }
 }
