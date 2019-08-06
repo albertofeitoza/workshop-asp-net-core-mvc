@@ -24,10 +24,10 @@ namespace SalesWebMvc.Models.ViewModels
         {
             this.id = id;
             Nome = nome;
-            Telefone = telefone;
-            Endereco = endereco;
-            Cnpj = cnpj;
-            this.nscricaoEstadual = nscricaoEstadual;
+            //Telefone = telefone;
+            //Endereco = endereco;
+            //Cnpj = cnpj;
+            //this.nscricaoEstadual = nscricaoEstadual;
             Responsavel = responsavel;
         }
 

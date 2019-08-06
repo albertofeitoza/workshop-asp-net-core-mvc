@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using SalesWebMvc.Models;
+using SalesWebMvc.Data;
 
 namespace SalesWebMvc {
     public class Startup {
@@ -29,11 +30,15 @@ namespace SalesWebMvc {
             });
 
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-    services.AddDbContext<SalesWebMvcContext>(options =>
+
+         services.AddDbContext<SalesWebMvcContext>(options =>
             // PARA SQL SERVER  options.UseSqlServer(Configuration.GetConnectionString("SalesWebMvcContext")));
             options.UseMySql(Configuration.GetConnectionString("SalesWebMvcContext"), builder => builder.MigrationsAssembly("SalesWebMvc"))); // PARA MYSQL
+
+
+            services.AddScoped<SeedingService>();
 
         }
 
