@@ -2,6 +2,7 @@
 using System;
 using SalesWebMvc.Models.ViewModels;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace SalesWebMvc.Models
@@ -17,6 +18,7 @@ namespace SalesWebMvc.Models
         public Departament Departament { get; set; }
 
         public ICollection<SallesRecord> Sales { get; set; } = new List<SallesRecord>();
+
 
         public Seller() {
         }
@@ -42,5 +44,10 @@ namespace SalesWebMvc.Models
             Sales.Remove(sr);
         }
 
+        public double TotalSales(DateTime initial, DateTime final)
+        {
+
+            return Sales.Where(sr => sr.Date >= initial && sr.Date <= final).Sum(sr => sr.Amount);
+        }
     }
 }
