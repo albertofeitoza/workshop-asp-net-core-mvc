@@ -39,17 +39,21 @@ namespace SalesWebMvc.Data
             Seller s4 = new Seller(4, "Vendedor Sistema3", "teste@gmail.com", new DateTime(1998, 4, 21), 1000.0, d4);
 
             SallesRecord r1 = new SallesRecord(1, new DateTime(1998, 1, 21), 11000.0, SaleStatus.Billed, s1);
-            SallesRecord r2 = new SallesRecord(2, new DateTime(1998, 1, 20), 11000.0, SaleStatus.Billed, s2);
-            SallesRecord r3 = new SallesRecord(3, new DateTime(1998, 1, 22), 11000.0, SaleStatus.Billed, s3);
-            SallesRecord r4 = new SallesRecord(4, new DateTime(1998, 1, 27), 11000.0, SaleStatus.Billed, s4);
-            SallesRecord r5 = new SallesRecord(2, new DateTime(1998, 1, 21), 11000.0, SaleStatus.Billed, s1);
-            SallesRecord r6 = new SallesRecord(2, new DateTime(1998, 1, 21), 11000.0, SaleStatus.Billed, s3);
+            //  SallesRecord r2 = new SallesRecord(2, new DateTime(1998, 1, 21), 11000.0, SaleStatus.Billed, s1);
+            SallesRecord r3 = new SallesRecord(1, new DateTime(1998, 1, 20), 11000.0, SaleStatus.Billed, s2);
+            // SallesRecord r4 = new SallesRecord(2, new DateTime(1998, 1, 20), 11000.0, SaleStatus.Billed, s2);
+            SallesRecord r5 = new SallesRecord(1, new DateTime(1998, 1, 21), 11000.0, SaleStatus.Billed, s3);
+            //SallesRecord r6 = new SallesRecord(2, new DateTime(1998, 1, 22), 11000.0, SaleStatus.Billed, s3);
+            SallesRecord r7 = new SallesRecord(1, new DateTime(1998, 1, 27), 11000.0, SaleStatus.Billed, s4);
+           // SallesRecord r8 = new SallesRecord(2, new DateTime(1998, 1, 27), 11000.0, SaleStatus.Billed, s4);
+
+
 
             _context.Departament.AddRange(d1,d2,d3,d4);
 
             _context.Seller.AddRange(s1, s2 ,s3 ,s4);
 
-            _context.SallesRecord.AddRange(r1, r2, r3, r4, r5, r6);
+            _context.SallesRecord.AddRange(r1, r3, r5,  r7);
 
             _context.SaveChanges();
 
