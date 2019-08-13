@@ -64,17 +64,9 @@ namespace SalesWebMvc.Migrations
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Cnpj");
-
-                    b.Property<string>("Endereco");
-
                     b.Property<string>("Nome");
 
                     b.Property<string>("Responsavel");
-
-                    b.Property<string>("Telefone");
-
-                    b.Property<string>("nscricaoEstadual");
 
                     b.HasKey("id");
 

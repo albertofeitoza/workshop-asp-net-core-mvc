@@ -9,7 +9,7 @@ using SalesWebMvc.Models;
 namespace SalesWebMvc.Migrations
 {
     [DbContext(typeof(SalesWebMvcContext))]
-    [Migration("20190808092724_inicial")]
+    [Migration("20190813115736_inicial")]
     partial class inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -66,17 +66,9 @@ namespace SalesWebMvc.Migrations
                     b.Property<int>("id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Cnpj");
-
-                    b.Property<string>("Endereco");
-
                     b.Property<string>("Nome");
 
                     b.Property<string>("Responsavel");
-
-                    b.Property<string>("Telefone");
-
-                    b.Property<string>("nscricaoEstadual");
 
                     b.HasKey("id");
 
