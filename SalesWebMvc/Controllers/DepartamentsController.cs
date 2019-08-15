@@ -11,8 +11,12 @@ using SalesWebMvc.Models.ViewModels;
 namespace SalesWebMvc.Controllers
 {
     public class DepartamentsController : Controller
+
+
     {
         private readonly SalesWebMvcContext _context;
+
+
 
         public DepartamentsController(SalesWebMvcContext context)
         {

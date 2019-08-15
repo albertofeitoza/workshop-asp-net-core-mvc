@@ -10,12 +10,10 @@ namespace SalesWebMvc.Services
     {
 
         private readonly SalesWebMvcContext _context; 
-
-
+        
         public SellerService(SalesWebMvcContext context)
         {
             _context = context;
-
         }
 
         public List<Seller> FindAll()
@@ -25,7 +23,7 @@ namespace SalesWebMvc.Services
 
         public void Insert(Seller obj)
         {
-            obj.Departament = _context.Departament.First();
+           // obj.Departament = _context.Departament.First();
             _context.Add(obj);
             _context.SaveChanges();
 
