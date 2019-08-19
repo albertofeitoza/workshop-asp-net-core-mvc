@@ -1,7 +1,50 @@
-﻿
+﻿@model SalesWebMvc.Models.Seller;
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Vendedor";
 }
 
-<h2>Edit</h2>
+<h2>@ViewData["Title"]</h2>
 
+
+<div>
+
+    <h4>Vendedor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BaseSalary)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.BaseSalary)
+        </dd>
+    </dl>
+
+    <form asp-action="Edit">
+        <input type="hidden" asp-for="id" />
+        <input type="submit" value="Edit" class="btn btn-danger" />
+        <a asp-action="Index">Voltar</a>
+    </form>
+
+
+</div>
