@@ -38,8 +38,10 @@ namespace SalesWebMvc.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Seller seller)
         {
+            
             _SellerService.Insert(seller);
             return RedirectToAction(nameof(Index));
+            
         }
 
 
@@ -54,9 +56,22 @@ namespace SalesWebMvc.Controllers
             return View();
         }
 
-        public IActionResult Delete()
+        public IActionResult Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var obj = _SellerService.FindById(id.Value);
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+
+            return View(obj);   
+                                 
         }
     }
 }
