@@ -73,5 +73,14 @@ namespace SalesWebMvc.Controllers
             return View(obj);   
                                  
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
+        {
+            _SellerService.Remove(id);
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }
