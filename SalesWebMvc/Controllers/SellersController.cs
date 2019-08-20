@@ -51,10 +51,10 @@ namespace SalesWebMvc.Controllers
             return View();
         }
 
-        public IActionResult Details()
-        {
-            return View();
-        }
+        //public IActionResult Details()
+        //{
+        //    return View();
+        //}
 
         public IActionResult Delete(int? id)
         {
