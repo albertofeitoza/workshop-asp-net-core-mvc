@@ -2,15 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using SalesWebMvc.Services.Exeptions;
 
 
 namespace SalesWebMvc.Services
 {
     public class SellerService
     {
-
         private readonly SalesWebMvcContext _context; 
         
         public SellerService(SalesWebMvcContext context)
@@ -33,7 +32,7 @@ namespace SalesWebMvc.Services
 
         public Seller FindById(int id)
         {
-            return _context.Seller.Include(obj => obj.Departament).FirstOrDefault(obj => obj.id == id); 
+            return _context.Seller.Include(obj => obj.Departament).FirstOrDefault(obj => obj.id == id);  //com o Include o sistema faz o Join
         }
 
         public void Remove(int id)
@@ -42,5 +41,24 @@ namespace SalesWebMvc.Services
             _context.Seller.Remove(obj);
             _context.SaveChanges();
         }
+
+        public void Update(Seller obj)
+        {
+            if(!_context.Seller.Any(x => x.id == obj.id))
+            {
+                throw new NotFoundException("Id não Encontrado");
+            }
+
+            try
+            { 
+            _context.Update(obj);
+            _context.SaveChanges();
+            }
+            catch(DbUpdateConcurrencyException e)
+            {
+                throw new DbConcurrencyExeption(e.Message);
+            }
+        }
+
     }
 }

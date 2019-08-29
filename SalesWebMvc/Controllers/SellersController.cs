@@ -9,6 +9,8 @@ using SalesWebMvc.Services;
 
 namespace SalesWebMvc.Controllers
 {
+
+   
     public class SellersController : Controller
     {
 
@@ -102,6 +104,23 @@ namespace SalesWebMvc.Controllers
 
         }
 
+        public IActionResult Edit(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+            //testar se o Id  existe no BD
+            var obj = _SellerService.FindById(id.Value);
+            if(obj == null)
+            {
+                return NotFound();
+            }
+
+            List<Departament> departaments = _DepartamentService.FindAll();
+            SellerFormViewModel viewModel = new SellerFormViewModel { Seller = obj, Departaments = departaments };
+            return View(viewModel);
+        }
 
     }
 }

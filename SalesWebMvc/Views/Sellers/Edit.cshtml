@@ -1,50 +1,46 @@
-﻿@model SalesWebMvc.Models.Seller;
+﻿@model SalesWebMvc.Models.ViewModels.SellerFormViewModel;
+
 @{
-    ViewData["Title"] = "Editar Vendedor";
+    ViewData["Title"] = "Editar Vendedores";
 }
 
 <h2>@ViewData["Title"]</h2>
 
+</ hr>
+<div class="row">
 
-<div>
+    <div class="col-md-4">
 
-    <h4>Vendedor</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.name)
-        </dd>
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="Seller.id" />
+            <div class="form-group">
+                <label asp-for="Seller.name" class="control-label"></label>
+                <input asp-for="Seller.name" class="form-control" />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.email)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.email)
-        </dd>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seller.email" class="control-label"></label>
+                <input asp-for="Seller.email" class="form-control" />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.BirthDate)
-        </dd>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seller.BirthDate" class="control-label"></label>
+                <input asp-for="Seller.BirthDate" class="form-control" />
 
-        <dt>
-            @Html.DisplayNameFor(model => model.BaseSalary)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.BaseSalary)
-        </dd>
-    </dl>
+            </div>
+            <div class="form-group">
+                <label asp-for="Seller.BaseSalary" class="control-label"></label>
+                <input asp-for="Seller.BaseSalary" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="Seller.Departament" class="control-label"></label>
+                <select asp-for="Seller.DepartamentId" asp-items="@(new SelectList(Model.Departaments,"id","Nome"))" class="form-control"></select>
 
-    <form asp-action="Edit">
-        <input type="hidden" asp-for="id" />
-        <input type="submit" value="Edit" class="btn btn-danger" />
-        <a asp-action="Index">Voltar</a>
-    </form>
+            </div>
 
-
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
 </div>
