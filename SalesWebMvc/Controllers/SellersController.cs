@@ -6,18 +6,19 @@ using Microsoft.AspNetCore.Mvc;
 using SalesWebMvc.Models;
 using SalesWebMvc.Models.ViewModels;
 using SalesWebMvc.Services;
-
+using SalesWebMvc.Services.Exeptions;
+    
 namespace SalesWebMvc.Controllers
 {
 
-   
+
     public class SellersController : Controller
     {
 
         private readonly SellerService _SellerService;
         private readonly DepartamentService _DepartamentService;
 
-        public SellersController(SellerService sellerService , DepartamentService departamentService)
+        public SellersController(SellerService sellerService, DepartamentService departamentService)
         {
             _SellerService = sellerService;
             _DepartamentService = departamentService;
@@ -40,23 +41,11 @@ namespace SalesWebMvc.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create(Seller seller)
         {
-            
+
             _SellerService.Insert(seller);
             return RedirectToAction(nameof(Index));
-            
+
         }
-
-
-
-        public IActionResult Edit()
-        {
-            return View();
-        }
-
-        //public IActionResult Details()
-        //{
-        //    return View();
-        //}
 
         public IActionResult Delete(int? id)
         {
@@ -72,8 +61,8 @@ namespace SalesWebMvc.Controllers
                 return NotFound();
             }
 
-            return View(obj);   
-                                 
+            return View(obj);
+
         }
 
         [HttpPost]
@@ -106,13 +95,13 @@ namespace SalesWebMvc.Controllers
 
         public IActionResult Edit(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
             //testar se o Id  existe no BD
             var obj = _SellerService.FindById(id.Value);
-            if(obj == null)
+            if (obj == null)
             {
                 return NotFound();
             }
@@ -122,5 +111,33 @@ namespace SalesWebMvc.Controllers
             return View(viewModel);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(int id, Seller seller)
+        {
+            if (id != seller.id)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                _SellerService.Update(seller);
+                return RedirectToAction(nameof(Index));
+            }
+            catch (NotFoundException)
+            {
+                return NotFound();
+            }
+            catch(DbConcurrencyExeption)
+            {
+                return BadRequest();
+
+            }
+           
+
+
+         
+        }
     }
 }

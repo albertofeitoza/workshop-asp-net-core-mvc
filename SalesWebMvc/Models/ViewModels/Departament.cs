@@ -9,10 +9,6 @@ namespace SalesWebMvc.Models.ViewModels
     {
         public int id { get; set; }
         public string Nome { get; set; }
-       // public string Telefone { get; set; }
-        //public string Endereco { get; set; }
-        //public string Cnpj { get; set; }
-       // public string nscricaoEstadual { get; set; }
         public string Responsavel { get; set; }
 
         public ICollection<Seller> Sellers { get; set; } = new List<Seller>();
